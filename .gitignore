@@ -1,0 +1,18 @@
+# IDE 配置
+.idea/
+*.iml
+*.classpath
+*.project
+.settings/
+
+# 后端编译产物
+blog-backend/target/
+
+# 前端依赖和打包产物
+blog-frontend/node_modules/
+blog-frontend/dist/
+blog-frontend/.vite/
+
+# 临时文件
+*.tmp
+*.log

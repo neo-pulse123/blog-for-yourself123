@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: blog-backend
+    env: docker
+    dockerfilePath: Dockerfile
+    dockerCommand: java -jar app.jar
+    envVars:
+      - key: SPRING_DATASOURCE_DRIVER
+        value: org.postgresql.Driver
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:postgresql://<your-db-host>:<port>/<database-name>
+      - key: SPRING_DATASOURCE_USERNAME
+        value: <username>
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: <password>
+      - key: SPRING_DATA_REDIS_HOST
+        value: <your-redis-host>
+      - key: SPRING_DATA_REDIS_PORT
+        value: 6379
+      - key: SPRING_DATA_REDIS_PASSWORD
+        value: <redis-password>
+      - key: JWT_SECRET
+        value: <your-secure-jwt-secret-key-min-256-bits>
+    autoDeploy: false
+
+  - type: web
+    name: blog-frontend
+    env: static
+    buildCommand: npm run build
+    outputDir: dist
+    indexPath: index.html
